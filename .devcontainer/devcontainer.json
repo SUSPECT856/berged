@@ -5,7 +5,7 @@
     "context": ".."
   },
   "remoteUser": "vscode",
-  "postCreateCommand": "cd os && make check",
+  "postCreateCommand": "make check",
   "customizations": {
     "vscode": {
       "extensions": []
