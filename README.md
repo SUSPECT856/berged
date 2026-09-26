@@ -1,26 +1,28 @@
-# Berged 0.0.3
+# BERGED OS 0.0.1
 
-This version is a fresh visual rebuild of the Berged company site.
+Real x86_64 bootable-core project, isolated under `os/` so the existing BERGED web project remains intact.
 
-## Goal
-A premium, Apple-inspired scroll-storytelling site for Berged: an AI workspace that brings multiple model ecosystems into one place.
+Scope:
+- BIOS stage1 -> stage2
+- protected mode -> paging -> long mode
+- freestanding kernel linked at 0x100000
+- VGA + COM1 serial console
+- polling keyboard
+- help/about/clear/reboot/shutdown paths
+- deterministic image build
+- QEMU headless CI smoke test
 
-## What changed
-- Full-screen, long-form provider scenes.
-- Sticky storytelling sections that linger on screen instead of flashing through.
-- No fake "ChatGPT family" model dump.
-- Provider-first storytelling: OpenAI, Google, Anthropic, xAI, Mistral, DeepSeek, and an extensible "More models" stage.
-- Dedicated workflow storytelling for One model / Compare / Mix / Debate / Jury.
-- Minimal, premium visual system with lots of whitespace and restrained motion.
-- No external JS libraries beyond Vite.
-
-## Run
+Build:
 ```bash
-npm install
-npm run dev
+cd os
+make
+make check
+make boot-test
 ```
 
-Open the Vite local URL in your browser.
+A QEMU boot is only considered tested when the real smoke test passes.
 
-## Note
-This is intentionally a marketing/design milestone. No real AI API calls are included yet.
+
+## Branch purpose
+
+This branch is the BERGED OS project. The unrelated BERGED web project is intentionally not present here.

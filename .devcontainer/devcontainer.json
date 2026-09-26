@@ -1,0 +1,14 @@
+{
+  "name": "BERGED OS 0.0.1",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": ".."
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": "make check",
+  "customizations": {
+    "vscode": {
+      "extensions": []
+    }
+  }
+}
