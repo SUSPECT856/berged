@@ -53,6 +53,20 @@ h1{font-size:22px;line-height:1.15;margin:0;letter-spacing:-.04em}
 @keyframes blink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.12)}}
 @keyframes appear{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+
+/* BERGED AI visual redesign: desktop-first layout */
+body{min-height:100vh;place-items:start center;padding:0;background:
+radial-gradient(ellipse at 18% 80%,#1d4770 0,transparent 35%),
+radial-gradient(ellipse at 82% 25%,#25204d 0,transparent 38%),
+linear-gradient(135deg,#070d19 0%,#101d32 48%,#080d18 100%)}
+.scene{width:100%;min-height:100vh;justify-content:flex-start;padding:16px 18px 28px;gap:18px;position:relative}
+.scene:before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.18;background-image:radial-gradient(#b8ddff 0.7px,transparent .7px);background-size:23px 23px}
+.brandnote{position:relative;z-index:1;align-self:center;font-size:10px;letter-spacing:.3em}
+.island{position:relative;z-index:2;margin:0 auto;width:min(370px,100%);min-height:64px;background:linear-gradient(110deg,#03070df7,#0b1728f7);border:1px solid #a8dcff6b;box-shadow:0 0 0 1px #8acbff10,0 8px 32px #0008,0 0 32px #4baaff24}
+.island.open{width:min(440px,100%);background:linear-gradient(145deg,#081322fa,#10233bfa)}
+.controls{position:relative;z-index:1;margin-top:18px}
+.foot{position:relative;z-index:1;margin-top:auto;padding-top:25px}
+@media(min-height:650px){.scene{min-height:100vh}}
 </style>
 </head>
 <body>
