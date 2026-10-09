@@ -22,6 +22,22 @@ button,input{font:inherit}button{cursor:pointer}
 .pulse{width:7px;height:7px;border-radius:50%;background:#8ef2cf;box-shadow:0 0 12px #8ef2cf}
 .arrow{border:0;background:transparent;color:#b8dfff;font-size:22px;padding:0 4px;transition:transform .2s}
 .open .arrow{transform:rotate(180deg)}
+/* Smooth capsule expansion and friendlier mascot */
+.island{transform-origin:top center;will-change:width, border-radius, transform;transition:width .42s cubic-bezier(.2,.8,.2,1),border-radius .42s cubic-bezier(.2,.8,.2,1),box-shadow .35s ease,background .35s ease}
+.island.open{animation:island-open .42s cubic-bezier(.2,.8,.2,1) both}
+.island.closing{animation:island-close .32s cubic-bezier(.4,0,.8,.2) both}
+.content{display:flex;flex-direction:column;gap:12px;max-height:0;opacity:0;overflow:hidden;visibility:hidden;transform:translateY(-8px);transition:max-height .38s ease,opacity .2s ease,transform .32s ease,visibility .38s}
+.open .content{display:flex;max-height:420px;opacity:1;visibility:visible;transform:translateY(0);animation:none}
+.ghost{filter:drop-shadow(0 3px 5px #7bc8ff20)}
+.ghost-shape{inset:4px 3px 5px;border-radius:46% 46% 40% 40%;background:linear-gradient(145deg,#fff 0%,#f7fbff 55%,#d9edff 100%);box-shadow:inset -3px -4px 0 #a4d4ff35,0 4px 12px #8dcfff25}
+.ghost-shape:after{left:1px;bottom:-3px;width:10px;height:9px;box-shadow:11px 2px 0 #f7fbff,22px 0 0 #d9edff}
+.eye{top:17px;width:6px;height:8px;border-radius:50%;background:#18314c;transform-origin:center}
+.eye.l{left:12px}.eye.r{right:11px}
+.smile{top:26px;left:18px;width:8px;height:4px;border-bottom:2px solid #18314c}
+.spark{right:-3px;top:-3px;color:#83caff;font-size:13px;animation:sparkle 2.8s ease-in-out infinite}
+@keyframes island-open{0%{transform:scale(.96, .92)}65%{transform:scale(1.015,1.01)}100%{transform:scale(1,1)}}
+@keyframes island-close{0%{transform:scale(1,1)}100%{transform:scale(.97,.94)}}
+@keyframes sparkle{0%,100%{opacity:.5;transform:scale(.85) rotate(0)}50%{opacity:1;transform:scale(1.15) rotate(12deg)}}
 .ghost{width:43px;height:43px;flex:none;position:relative;display:grid;place-items:center;animation:float 3.4s ease-in-out infinite}
 .ghost-shape{position:absolute;inset:3px 2px 5px;background:linear-gradient(140deg,#fff 8%,#e7f3ff 66%,#b8e1ff);border-radius:48% 48% 38% 38%;box-shadow:inset -4px -4px 0 #a4d4ff45,0 0 17px #8dcfff45}
 .ghost-shape:after{content:"";position:absolute;bottom:-3px;left:2px;width:12px;height:10px;background:#d8ecff;border-radius:0 0 80% 50%;box-shadow:12px 3px 0 #e7f4ff,24px 1px 0 #c5e4ff}
@@ -97,7 +113,23 @@ linear-gradient(135deg,#070d19 0%,#101d32 48%,#080d18 100%)}
 </main>
 <script>
 const island=document.getElementById('island'),toggle=document.getElementById('islandToggle'),status=document.getElementById('status'),entry=document.getElementById('entry'),chat=document.getElementById('chat');
-function setOpen(force){const open=typeof force==='boolean'?force:!island.classList.contains('open');island.classList.toggle('open',open);island.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-expanded',String(open));status.textContent=open?'Seni dinliyorum ✨':'Minik yardımcın burada';if(open)entry.focus()}
+function setOpen(force){
+  const open=typeof force==='boolean'?force:!island.classList.contains('open');
+  island.classList.remove('closing');
+  if(open){
+    island.classList.add('open');
+    island.setAttribute('aria-expanded','true');
+    toggle.setAttribute('aria-expanded','true');
+    status.textContent='Seni dinliyorum ✨';
+    window.setTimeout(()=>entry.focus(),180);
+  }else{
+    island.classList.add('closing');
+    island.setAttribute('aria-expanded','false');
+    toggle.setAttribute('aria-expanded','false');
+    status.textContent='Minik yardımcın burada';
+    window.setTimeout(()=>{island.classList.remove('open','closing')},300);
+  }
+}
 toggle.addEventListener('click',()=>setOpen());
 document.getElementById('openBtn').addEventListener('click',()=>setOpen());
 function add(text,who){const el=document.createElement('div');el.className='message'+(who==='me'?' me':'');el.textContent=text;chat.appendChild(el);chat.scrollTop=chat.scrollHeight}
