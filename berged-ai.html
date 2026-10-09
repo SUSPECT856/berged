@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>BERGED AI</title>
+<style>
+:root{color-scheme:dark;--bg:#090a10;--card:#151722;--line:#ffffff18;--text:#f7f7fb;--muted:#a0a4b6;--blue:#8ba8ff;--pink:#f4b8e8}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -15%,#232743 0,transparent 55%),var(--bg);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);display:grid;place-items:center;padding:24px}
+button,input{font:inherit}
+button{cursor:pointer}
+.stage{width:min(720px,100%);text-align:center}
+.topnote{font-size:12px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:25px}
+.pill{width:min(390px,100%);margin:0 auto;height:72px;padding:8px 16px;border-radius:999px;background:#030407;border:1px solid #ffffff22;box-shadow:0 16px 55px #0008,0 0 0 1px #000;display:flex;align-items:center;gap:13px;transition:width .35s,height .35s,border-radius .35s;overflow:hidden;text-align:left}
+.pill:hover{border-color:#ffffff40}
+.pill.open{height:345px;width:min(480px,100%);border-radius:30px;align-items:stretch;flex-direction:column;padding:15px}
+.pillhead{display:flex;align-items:center;gap:12px;min-height:52px;flex-shrink:0}
+.brand{font-weight:800;letter-spacing:.07em;font-size:13px}
+.status{color:#888da0;font-size:11px}
+.dot{margin-left:auto;width:8px;height:8px;background:#7fe5b2;border-radius:50%;box-shadow:0 0 12px #7fe5b280}
+.chevron{color:#888da0;margin-left:4px}
+.pill.open .chevron{transform:rotate(180deg)}
+.mini{width:44px;height:44px;border-radius:50%;background:#191c2a;display:grid;place-items:center;flex-shrink:0}
+.blob{width:34px;height:32px;background:linear-gradient(140deg,#d7e0ff,#8ea4ff 65%,#7684df);border-radius:45% 48% 42% 48%;position:relative;box-shadow:inset -4px -5px 0 #6173bd2b;animation:bob 3s ease-in-out infinite}
+.eye{position:absolute;top:11px;width:5px;height:7px;background:#242944;border-radius:99px;animation:blink 5s infinite}
+.eye.left{left:9px}.eye.right{right:9px}
+.cheek{position:absolute;top:20px;width:7px;height:4px;border-radius:50%;background:#f7a9cd99}
+.cheek.left{left:4px}.cheek.right{right:4px}
+.mouth{position:absolute;top:20px;left:15px;width:5px;height:3px;border-bottom:2px solid #242944;border-radius:50%}
+.pillmain{display:none;min-height:0;flex:1}
+.open .pillmain{display:flex;flex-direction:column;align-items:center;overflow:auto}
+.greeting{font-size:21px;letter-spacing:-.04em;margin:7px 0 2px;font-weight:750}
+.sub{font-size:12px;color:var(--muted);margin:0 0 14px}
+.wave{font-size:27px;display:inline-block;transform-origin:70% 70%;animation:wave 1.7s ease-in-out infinite}
+.chatlog{width:100%;min-height:65px;max-height:105px;overflow:auto;display:flex;flex-direction:column;gap:7px;padding:0 2px;margin:0 0 10px}
+.msg{background:#202334;border:1px solid var(--line);color:#e5e8f6;padding:8px 11px;border-radius:13px 13px 13px 4px;font-size:12px;max-width:95%;text-align:left;align-self:flex-start}
+.msg.me{background:#303b64;border-radius:13px 13px 4px 13px;align-self:flex-end}
+.quick{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:0 0 10px}
+.quick button{border:1px solid var(--line);background:#1b1e2b;color:#d9def2;border-radius:999px;padding:7px 10px;font-size:11px}
+.composer{display:flex;width:100%;gap:7px;margin-top:auto}
+.composer input{min-width:0;flex:1;background:#090b11;border:1px solid var(--line);border-radius:13px;padding:11px 12px;color:white;outline:none}
+.composer input:focus{border-color:#8ba8ff99}
+.send{width:42px;border:0;border-radius:13px;background:#cbd6ff;color:#15192b;font-weight:800}
+.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px}
+.actions button{background:#141722;border:1px solid var(--line);color:#dce0ee;border-radius:14px;padding:10px 14px}
+.actions button:hover,.quick button:hover{background:#252a3c}
+.tip{font-size:12px;color:#747a90;margin-top:20px}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+@keyframes blink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.12)}}
+@keyframes wave{0%,55%,100%{transform:rotate(0)}10%,25%{transform:rotate(18deg)}18%,33%{transform:rotate(-10deg)}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+<main class="stage">
+<div class="topnote">BERGEDÓ TECHNOLOGY · CONCEPT</div>
+<button class="pill" id="pill" aria-expanded="false" aria-label="BERGED AI asistanını aç">
+  <div class="pillhead">
+    <span class="mini"><span class="blob"><i class="eye left"></i><i class="eye right"></i><i class="cheek left"></i><i class="cheek right"></i><i class="mouth"></i></span></span>
+    <span><span class="brand">BERGED AI</span><br><span class="status" id="status">Buradayım, tıkla! 👋</span></span>
+    <span class="dot"></span><span class="chevron">⌄</span>
+  </div>
+  <section class="pillmain">
+    <div class="wave">👋</div>
+    <div class="greeting">Selam! Ben BERGED AI.</div>
+    <p class="sub">Minik yardımcın hazır. Ne yapalım?</p>
+    <div class="chatlog" id="chatlog"><div class="msg">Merhaba! Benimle konuşabilirsin. ✨</div></div>
+    <div class="quick">
+      <button type="button" data-msg="Bana kendini tanıt">Kendini tanıt</button>
+      <button type="button" data-msg="Bugün için bir öneri ver">Öneri ver</button>
+      <button type="button" data-msg="Bana motivasyon ver">Motivasyon</button>
+    </div>
+    <form class="composer" id="form"><input id="entry" autocomplete="off" placeholder="Bir şey yaz..." aria-label="Mesajın"><button class="send" aria-label="Gönder">➜</button></form>
+  </section>
+</button>
+<div class="actions"><button id="toggle" type="button">Asistanı aç / kapat</button><button id="wavebtn" type="button">👋 Selam ver</button></div>
+<p class="tip">Bu, çalışan bir arayüz prototipidir. Sohbet yanıtları örnektir; çevrimiçi yapay zekâ bağlantısı henüz eklenmedi.</p>
+</main>
+<script>
+const pill=document.getElementById('pill'),statusEl=document.getElementById('status'),log=document.getElementById('chatlog'),entry=document.getElementById('entry');
+function toggle(force){const open=typeof force==='boolean'?force:!pill.classList.contains('open');pill.classList.toggle('open',open);pill.setAttribute('aria-expanded',String(open));statusEl.textContent=open?'Seni dinliyorum ✨':'Buradayım, tıkla! 👋';if(open)setTimeout(()=>entry.focus(),100)}
+pill.addEventListener('click',e=>{if(e.target.closest('input,form,[data-msg]'))return;if(!pill.classList.contains('open'))toggle(true)});
+document.getElementById('toggle').addEventListener('click',()=>toggle());
+document.getElementById('wavebtn').addEventListener('click',()=>{toggle(true);add('BERGED AI','Sana kocaman bir selam! 👋')});
+function add(text,who){const d=document.createElement('div');d.className='msg'+(who==='me'?' me':'');d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight}
+function answer(t){const q=t.toLocaleLowerCase('tr');if(q.includes('tanıt'))return 'Ben BERGED AI! BERGEDÓ TECHNOLOGY için tasarlanmış küçük, sevimli masaüstü yardımcısıyım. Şimdilik prototip sürümündeyim. 💙';if(q.includes('öneri'))return 'Bugün küçük bir hedef seç, 15 dakika odaklan ve sonra kendine kısa bir mola ver. Küçük adımlar da ilerlemedir!';if(q.includes('motivasyon'))return 'Her şeyi bir günde bitirmek zorunda değilsin. Bugün bir adım atman yeter. Hadi yapalım! ✨';if(q.includes('merhaba')||q.includes('selam'))return 'Selam! 👋 Burada olman güzel. Sana nasıl yardımcı olayım?';if(q.includes('saat'))return 'Cihazının saatini kontrol edebilirsin. Bu prototipte canlı sistem bilgilerine erişim yok.';return 'Mesajını aldım! Şimdilik örnek yanıtlar verebiliyorum; gerçek yapay zekâ sohbeti için ayrıca bir AI servisi bağlamamız gerekiyor. 💙'}
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const t=entry.value.trim();if(!t)return;add(t,'me');entry.value='';setTimeout(()=>add(answer(t)),300)});
+document.querySelectorAll('[data-msg]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const t=b.dataset.msg;add(t,'me');setTimeout(()=>add(answer(t)),300)}));
+document.getElementById('toggle').addEventListener('click',e=>e.stopPropagation());document.getElementById('wavebtn').addEventListener('click',e=>e.stopPropagation());
+</script>
+</body>
+</html>
