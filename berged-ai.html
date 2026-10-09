@@ -3,91 +3,95 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>BERGED AI</title>
+<meta name="theme-color" content="#101b31">
+<title>BERGED AI — Desktop Companion</title>
 <style>
-:root{color-scheme:dark;--bg:#090a10;--card:#151722;--line:#ffffff18;--text:#f7f7fb;--muted:#a0a4b6;--blue:#8ba8ff;--pink:#f4b8e8}
+:root{color-scheme:dark;--ink:#f5f8ff;--muted:#aabbd6;--blue:#86c8ff;--line:#ffffff20;--panel:#12223a}
 *{box-sizing:border-box}
-body{margin:0;min-height:100vh;background:radial-gradient(ellipse at 50% -15%,#232743 0,transparent 55%),var(--bg);font:15px/1.45 system-ui,-apple-system,Segoe UI,sans-serif;color:var(--text);display:grid;place-items:center;padding:24px}
-button,input{font:inherit}
-button{cursor:pointer}
-.stage{width:min(720px,100%);text-align:center}
-.topnote{font-size:12px;color:var(--muted);letter-spacing:.16em;text-transform:uppercase;margin-bottom:25px}
-.pill{width:min(390px,100%);margin:0 auto;height:72px;padding:8px 16px;border-radius:999px;background:#030407;border:1px solid #ffffff22;box-shadow:0 16px 55px #0008,0 0 0 1px #000;display:flex;align-items:center;gap:13px;transition:width .35s,height .35s,border-radius .35s;overflow:hidden;text-align:left}
-.pill:hover{border-color:#ffffff40}
-.pill.open{height:345px;width:min(480px,100%);border-radius:30px;align-items:stretch;flex-direction:column;padding:15px}
-.pillhead{display:flex;align-items:center;gap:12px;min-height:52px;flex-shrink:0}
-.brand{font-weight:800;letter-spacing:.07em;font-size:13px}
-.status{color:#888da0;font-size:11px}
-.dot{margin-left:auto;width:8px;height:8px;background:#7fe5b2;border-radius:50%;box-shadow:0 0 12px #7fe5b280}
-.chevron{color:#888da0;margin-left:4px}
-.pill.open .chevron{transform:rotate(180deg)}
-.mini{width:44px;height:44px;border-radius:50%;background:#191c2a;display:grid;place-items:center;flex-shrink:0}
-.blob{width:34px;height:32px;background:linear-gradient(140deg,#d7e0ff,#8ea4ff 65%,#7684df);border-radius:45% 48% 42% 48%;position:relative;box-shadow:inset -4px -5px 0 #6173bd2b;animation:bob 3s ease-in-out infinite}
-.eye{position:absolute;top:11px;width:5px;height:7px;background:#242944;border-radius:99px;animation:blink 5s infinite}
-.eye.left{left:9px}.eye.right{right:9px}
-.cheek{position:absolute;top:20px;width:7px;height:4px;border-radius:50%;background:#f7a9cd99}
-.cheek.left{left:4px}.cheek.right{right:4px}
-.mouth{position:absolute;top:20px;left:15px;width:5px;height:3px;border-bottom:2px solid #242944;border-radius:50%}
-.pillmain{display:none;min-height:0;flex:1}
-.open .pillmain{display:flex;flex-direction:column;align-items:center;overflow:auto}
-.greeting{font-size:21px;letter-spacing:-.04em;margin:7px 0 2px;font-weight:750}
-.sub{font-size:12px;color:var(--muted);margin:0 0 14px}
-.wave{font-size:27px;display:inline-block;transform-origin:70% 70%;animation:wave 1.7s ease-in-out infinite}
-.chatlog{width:100%;min-height:65px;max-height:105px;overflow:auto;display:flex;flex-direction:column;gap:7px;padding:0 2px;margin:0 0 10px}
-.msg{background:#202334;border:1px solid var(--line);color:#e5e8f6;padding:8px 11px;border-radius:13px 13px 13px 4px;font-size:12px;max-width:95%;text-align:left;align-self:flex-start}
-.msg.me{background:#303b64;border-radius:13px 13px 4px 13px;align-self:flex-end}
-.quick{display:flex;gap:7px;flex-wrap:wrap;justify-content:center;margin:0 0 10px}
-.quick button{border:1px solid var(--line);background:#1b1e2b;color:#d9def2;border-radius:999px;padding:7px 10px;font-size:11px}
-.composer{display:flex;width:100%;gap:7px;margin-top:auto}
-.composer input{min-width:0;flex:1;background:#090b11;border:1px solid var(--line);border-radius:13px;padding:11px 12px;color:white;outline:none}
-.composer input:focus{border-color:#8ba8ff99}
-.send{width:42px;border:0;border-radius:13px;background:#cbd6ff;color:#15192b;font-weight:800}
-.actions{display:flex;justify-content:center;gap:8px;flex-wrap:wrap;margin-top:22px}
-.actions button{background:#141722;border:1px solid var(--line);color:#dce0ee;border-radius:14px;padding:10px 14px}
-.actions button:hover,.quick button:hover{background:#252a3c}
-.tip{font-size:12px;color:#747a90;margin-top:20px}
-@keyframes bob{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-3px) rotate(2deg)}}
+body{margin:0;min-height:100vh;color:var(--ink);font:15px/1.5 "Segoe UI",Arial,sans-serif;background:radial-gradient(ellipse at 50% 0,#31527b 0,transparent 45%),linear-gradient(145deg,#182c47,#091321 72%);display:grid;place-items:center;padding:28px 16px}
+button,input{font:inherit}button{cursor:pointer}
+.scene{width:min(760px,100%);display:flex;flex-direction:column;align-items:center;gap:22px}
+.brandnote{font-size:11px;letter-spacing:.24em;color:#b7d8fa;text-transform:uppercase}
+.island{width:min(390px,100%);min-height:70px;padding:10px 15px;border:1px solid #8acbff9c;border-radius:999px;background:linear-gradient(110deg,#081321f5,#102846f5);box-shadow:0 0 0 3px #7bc5ff12,0 0 30px #4baaff35;display:flex;align-items:center;gap:12px;transition:width .28s ease,border-radius .28s ease,box-shadow .28s ease;position:relative}
+.island.open{width:min(500px,100%);border-radius:27px;align-items:stretch;flex-direction:column;padding:15px;box-shadow:0 0 35px #4baaff40}
+.island-top{display:flex;align-items:center;gap:12px;min-height:47px;flex-shrink:0}
+.identity{display:flex;flex-direction:column;line-height:1.3}
+.name{font-size:14px;font-weight:750;letter-spacing:.08em}
+.status{font-size:12px;color:var(--muted);margin-top:3px}
+.spacer{flex:1}
+.pulse{width:7px;height:7px;border-radius:50%;background:#8ef2cf;box-shadow:0 0 12px #8ef2cf}
+.arrow{border:0;background:transparent;color:#b8dfff;font-size:22px;padding:0 4px;transition:transform .2s}
+.open .arrow{transform:rotate(180deg)}
+.ghost{width:43px;height:43px;flex:none;position:relative;display:grid;place-items:center;animation:float 3.4s ease-in-out infinite}
+.ghost-shape{position:absolute;inset:3px 2px 5px;background:linear-gradient(140deg,#fff 8%,#e7f3ff 66%,#b8e1ff);border-radius:48% 48% 38% 38%;box-shadow:inset -4px -4px 0 #a4d4ff45,0 0 17px #8dcfff45}
+.ghost-shape:after{content:"";position:absolute;bottom:-3px;left:2px;width:12px;height:10px;background:#d8ecff;border-radius:0 0 80% 50%;box-shadow:12px 3px 0 #e7f4ff,24px 1px 0 #c5e4ff}
+.eye{position:absolute;z-index:1;top:17px;width:5px;height:7px;border-radius:50%;background:#203955;animation:blink 5.2s infinite}
+.eye.l{left:13px}.eye.r{right:12px}
+.smile{position:absolute;z-index:1;top:25px;left:19px;width:7px;height:4px;border-bottom:2px solid #203955;border-radius:0 0 8px 8px}
+.spark{position:absolute;right:-1px;top:-2px;color:#bde7ff;font-size:15px}
+.content{display:none;min-height:0}
+.open .content{display:flex;flex-direction:column;gap:12px;animation:appear .2s ease}
+.welcome{display:flex;align-items:center;gap:13px;padding:8px 4px 2px}
+.hero-ghost{width:62px;height:62px;transform:scale(1.2);margin:0 8px}
+h1{font-size:22px;line-height:1.15;margin:0;letter-spacing:-.04em}
+.subtitle{margin:5px 0 0;color:var(--muted);font-size:13px}
+.chat{display:flex;flex-direction:column;gap:8px;max-height:170px;overflow:auto;padding:4px 2px}
+.message{max-width:92%;align-self:flex-start;padding:10px 13px;background:#ffffff0c;border:1px solid var(--line);border-radius:15px 15px 15px 5px;font-size:13px;overflow-wrap:anywhere}
+.message.me{align-self:flex-end;background:#2b527b80;border-radius:15px 15px 5px 15px}
+.quick{display:flex;gap:7px;flex-wrap:wrap}
+.quick button{border:1px solid #8acbff38;background:#172c47;color:#e5f3ff;border-radius:999px;padding:8px 11px;font-size:12px}
+.quick button:hover{background:#25476a}
+.composer{display:flex;gap:8px;margin-top:2px}
+.composer input{min-width:0;flex:1;border:1px solid #8acbff42;border-radius:14px;padding:12px;background:#071321;color:#fff;outline:none}
+.composer input:focus{border-color:#86c8ff}
+.send{width:46px;border:0;border-radius:14px;background:#8ccfff;color:#10233a;font-size:19px;font-weight:bold}
+.foot{color:#9db2cc;text-align:center;font-size:12px;max-width:460px}
+.controls{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.controls button{border:1px solid var(--line);border-radius:12px;background:#ffffff0a;color:#dcecff;padding:9px 13px}
+.controls button:hover{background:#ffffff14}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-3px)}}
 @keyframes blink{0%,44%,48%,100%{transform:scaleY(1)}46%{transform:scaleY(.12)}}
-@keyframes wave{0%,55%,100%{transform:rotate(0)}10%,25%{transform:rotate(18deg)}18%,33%{transform:rotate(-10deg)}}
+@keyframes appear{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
-<main class="stage">
-<div class="topnote">BERGEDÓ TECHNOLOGY · CONCEPT</div>
-<button class="pill" id="pill" aria-expanded="false" aria-label="BERGED AI asistanını aç">
-  <div class="pillhead">
-    <span class="mini"><span class="blob"><i class="eye left"></i><i class="eye right"></i><i class="cheek left"></i><i class="cheek right"></i><i class="mouth"></i></span></span>
-    <span><span class="brand">BERGED AI</span><br><span class="status" id="status">Buradayım, tıkla! 👋</span></span>
-    <span class="dot"></span><span class="chevron">⌄</span>
-  </div>
-  <section class="pillmain">
-    <div class="wave">👋</div>
-    <div class="greeting">Selam! Ben BERGED AI.</div>
-    <p class="sub">Minik yardımcın hazır. Ne yapalım?</p>
-    <div class="chatlog" id="chatlog"><div class="msg">Merhaba! Benimle konuşabilirsin. ✨</div></div>
-    <div class="quick">
-      <button type="button" data-msg="Bana kendini tanıt">Kendini tanıt</button>
-      <button type="button" data-msg="Bugün için bir öneri ver">Öneri ver</button>
-      <button type="button" data-msg="Bana motivasyon ver">Motivasyon</button>
+<main class="scene">
+<div class="brandnote">BERGEDÓ TECHNOLOGY</div>
+<section class="island" id="island" aria-expanded="false">
+  <button class="island-top" id="islandToggle" type="button" aria-label="BERGED AI'yi aç veya kapat" style="border:0;background:transparent;color:inherit;text-align:left;padding:0;cursor:pointer">
+    <span class="ghost" aria-hidden="true"><span class="ghost-shape"></span><i class="eye l"></i><i class="eye r"></i><i class="smile"></i><span class="spark">✦</span></span>
+    <span class="identity"><span class="name">BERGED AI</span><span class="status" id="status">Minik yardımcın burada</span></span>
+    <span class="spacer"></span><span class="pulse"></span><span class="arrow" id="arrow">⌄</span>
+  </button>
+  <div class="content" id="content">
+    <div class="welcome">
+      <span class="ghost hero-ghost" aria-hidden="true"><span class="ghost-shape"></span><i class="eye l"></i><i class="eye r"></i><i class="smile"></i><span class="spark">✦</span></span>
+      <div><h1>Selam, ben BERGED AI. 👋</h1><p class="subtitle">Küçük bir asistan, büyük bir kolaylık.</p></div>
     </div>
-    <form class="composer" id="form"><input id="entry" autocomplete="off" placeholder="Bir şey yaz..." aria-label="Mesajın"><button class="send" aria-label="Gönder">➜</button></form>
-  </section>
-</button>
-<div class="actions"><button id="toggle" type="button">Asistanı aç / kapat</button><button id="wavebtn" type="button">👋 Selam ver</button></div>
-<p class="tip">Bu, çalışan bir arayüz prototipidir. Sohbet yanıtları örnektir; çevrimiçi yapay zekâ bağlantısı henüz eklenmedi.</p>
+    <div class="chat" id="chat" aria-live="polite"><div class="message">Buradayım! Ne yapmak istersin? ✨</div></div>
+    <div class="quick">
+      <button type="button" data-msg="Kendini tanıt">Kendini tanıt</button>
+      <button type="button" data-msg="Bana bir fikir ver">Fikir üret</button>
+      <button type="button" data-msg="Beni motive et">Motivasyon</button>
+    </div>
+    <form class="composer" id="form"><input id="entry" autocomplete="off" placeholder="BERGED AI'ye mesaj yaz..." aria-label="Mesajın"><button class="send" aria-label="Gönder">➤</button></form>
+  </div>
+</section>
+<div class="controls"><button type="button" id="openBtn">Asistanı aç / kapat</button><button type="button" id="helloBtn">👋 Selam ver</button></div>
+<p class="foot">Hafif arayüz prototipi · Windows 8.1 için sade HTML, CSS ve JavaScript<br>Not: Bu sayfa henüz masaüstünde diğer pencerelerin üzerinde durmaz; gerçek AI bağlantısı da sonraki aşamada eklenecek.</p>
 </main>
 <script>
-const pill=document.getElementById('pill'),statusEl=document.getElementById('status'),log=document.getElementById('chatlog'),entry=document.getElementById('entry');
-function toggle(force){const open=typeof force==='boolean'?force:!pill.classList.contains('open');pill.classList.toggle('open',open);pill.setAttribute('aria-expanded',String(open));statusEl.textContent=open?'Seni dinliyorum ✨':'Buradayım, tıkla! 👋';if(open)setTimeout(()=>entry.focus(),100)}
-pill.addEventListener('click',e=>{if(e.target.closest('input,form,[data-msg]'))return;if(!pill.classList.contains('open'))toggle(true)});
-document.getElementById('toggle').addEventListener('click',()=>toggle());
-document.getElementById('wavebtn').addEventListener('click',()=>{toggle(true);add('BERGED AI','Sana kocaman bir selam! 👋')});
-function add(text,who){const d=document.createElement('div');d.className='msg'+(who==='me'?' me':'');d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight}
-function answer(t){const q=t.toLocaleLowerCase('tr');if(q.includes('tanıt'))return 'Ben BERGED AI! BERGEDÓ TECHNOLOGY için tasarlanmış küçük, sevimli masaüstü yardımcısıyım. Şimdilik prototip sürümündeyim. 💙';if(q.includes('öneri'))return 'Bugün küçük bir hedef seç, 15 dakika odaklan ve sonra kendine kısa bir mola ver. Küçük adımlar da ilerlemedir!';if(q.includes('motivasyon'))return 'Her şeyi bir günde bitirmek zorunda değilsin. Bugün bir adım atman yeter. Hadi yapalım! ✨';if(q.includes('merhaba')||q.includes('selam'))return 'Selam! 👋 Burada olman güzel. Sana nasıl yardımcı olayım?';if(q.includes('saat'))return 'Cihazının saatini kontrol edebilirsin. Bu prototipte canlı sistem bilgilerine erişim yok.';return 'Mesajını aldım! Şimdilik örnek yanıtlar verebiliyorum; gerçek yapay zekâ sohbeti için ayrıca bir AI servisi bağlamamız gerekiyor. 💙'}
-document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();const t=entry.value.trim();if(!t)return;add(t,'me');entry.value='';setTimeout(()=>add(answer(t)),300)});
-document.querySelectorAll('[data-msg]').forEach(b=>b.addEventListener('click',e=>{e.stopPropagation();const t=b.dataset.msg;add(t,'me');setTimeout(()=>add(answer(t)),300)}));
-document.getElementById('toggle').addEventListener('click',e=>e.stopPropagation());document.getElementById('wavebtn').addEventListener('click',e=>e.stopPropagation());
+const island=document.getElementById('island'),toggle=document.getElementById('islandToggle'),status=document.getElementById('status'),entry=document.getElementById('entry'),chat=document.getElementById('chat');
+function setOpen(force){const open=typeof force==='boolean'?force:!island.classList.contains('open');island.classList.toggle('open',open);island.setAttribute('aria-expanded',String(open));toggle.setAttribute('aria-expanded',String(open));status.textContent=open?'Seni dinliyorum ✨':'Minik yardımcın burada';if(open)entry.focus()}
+toggle.addEventListener('click',()=>setOpen());
+document.getElementById('openBtn').addEventListener('click',()=>setOpen());
+function add(text,who){const el=document.createElement('div');el.className='message'+(who==='me'?' me':'');el.textContent=text;chat.appendChild(el);chat.scrollTop=chat.scrollHeight}
+function reply(text){const q=text.toLocaleLowerCase('tr');if(q.includes('tanıt'))return 'Ben BERGED AI! BERGEDÓ TECHNOLOGY için tasarlanan minik masaüstü yardımcısıyım. Şimdilik prototip sürümündeyim. 💙';if(q.includes('fikir'))return 'Bir mini proje seçelim: 15 dakikada küçük bir özellik geliştir, sonra sonucunu test et. ✨';if(q.includes('motiv'))return 'Her şeyi bir anda yapmak zorunda değilsin. Küçük bir adım da ilerlemedir. Yanındayım!';if(q.includes('selam')||q.includes('merhaba'))return 'Selam! 👋 Seni görmek güzel. Bugün ne yapıyoruz?';return 'Mesajını aldım! Şimdilik örnek yanıtlar kullanıyorum. Gerçek sohbet için sonraki aşamada bir yapay zekâ servisi bağlayacağız.'}
+function send(text){const value=text.trim();if(!value)return;add(value,'me');setTimeout(()=>add(reply(value)),220)}
+document.getElementById('form').addEventListener('submit',e=>{e.preventDefault();send(entry.value);entry.value=''});
+document.querySelectorAll('[data-msg]').forEach(b=>b.addEventListener('click',()=>send(b.dataset.msg)));
+document.getElementById('helloBtn').addEventListener('click',()=>{setOpen(true);add('Sana kocaman bir selam! 👻','')});
 </script>
 </body>
 </html>
