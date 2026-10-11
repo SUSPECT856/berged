@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#f4f1eb">
+<title>Berged Atelier — by Bergedo</title>
+<style>
+:root{--paper:#f4f1eb;--ink:#20211f;--muted:#777870;--line:#dedbd3;--panel:#fffdf8;--dark:#20211f;--lime:#d6f36a;--soft:#e9e6de;--serif:Georgia,'Times New Roman',serif}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Arial,Helvetica,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.shell{min-height:100vh;display:grid;grid-template-columns:230px minmax(0,1fr)}.sidebar{border-right:1px solid var(--line);padding:25px 18px;display:flex;flex-direction:column;gap:28px}.wordmark{font-size:23px;letter-spacing:-1.2px;font-weight:800}.wordmark span{display:block;font-size:10px;letter-spacing:2px;font-weight:500;color:var(--muted);margin-top:4px}.side-label{font-size:10px;letter-spacing:1.8px;color:var(--muted);margin:0 10px 10px}.nav{display:grid;gap:5px}.nav button{border:0;text-align:left;background:transparent;padding:12px 11px;border-radius:8px;color:#55574f;font-size:13px}.nav button.active,.nav button:hover{background:var(--soft);color:var(--ink)}.sidebar-bottom{margin-top:auto;border-top:1px solid var(--line);padding-top:17px;color:var(--muted);font-size:11px;line-height:1.6}.main{min-width:0}.topbar{height:72px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 34px}.crumb{font-size:12px;color:var(--muted)}.crumb strong{color:var(--ink);font-weight:600}.top-actions{display:flex;align-items:center;gap:10px}.status{font-size:11px;color:#62645b;display:flex;align-items:center;gap:7px}.dot{width:7px;height:7px;border-radius:50%;background:#9ebd3c}.outline-btn,.dark-btn,.small-btn{border:1px solid var(--line);background:transparent;padding:10px 14px;border-radius:6px;font-size:12px;color:var(--ink)}.dark-btn{background:var(--dark);color:white;border-color:var(--dark)}.content{max-width:1280px;margin:auto;padding:32px 34px 50px}.eyebrow{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--muted);margin-bottom:12px}.hero{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;margin-bottom:28px}.hero h1{font-family:var(--serif);font-size:clamp(31px,4vw,49px);font-weight:400;letter-spacing:-1.6px;line-height:1.02;margin:0}.hero p{color:var(--muted);font-size:13px;line-height:1.6;max-width:440px;margin:12px 0 0}.version{font-size:11px;color:var(--muted);white-space:nowrap;padding-bottom:5px}.workspace{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(340px,.92fr);gap:18px;align-items:start}.panel{background:var(--panel);border:1px solid var(--line);border-radius:10px;overflow:hidden}.panel-head{padding:18px 20px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:12px}.panel-title{font-size:13px;font-weight:700}.panel-sub{font-size:11px;color:var(--muted);margin-top:5px}.step{font-size:10px;color:var(--muted);letter-spacing:1px}.panel-body{padding:20px}.field-label{display:block;font-size:11px;font-weight:700;margin-bottom:9px}.garment-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px;margin-bottom:23px}.garment{border:1px solid var(--line);background:transparent;border-radius:7px;padding:12px 5px 10px;min-height:93px;text-align:center;color:#55574f}.garment .glyph{display:block;font-size:25px;margin-bottom:9px}.garment span:last-child{font-size:11px}.garment.selected{border-color:var(--ink);background:#eeece4;box-shadow:inset 0 0 0 1px var(--ink);color:var(--ink)}.field-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px 12px}.field{min-width:0}.field.full{grid-column:1/-1}select,input[type=text],textarea{width:100%;border:1px solid var(--line);background:#fffdf9;border-radius:6px;padding:11px 10px;font-size:12px;color:var(--ink);outline:none}select:focus,input:focus,textarea:focus{border-color:#7b7d71}textarea{resize:vertical;min-height:72px;line-height:1.5}.check-row{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#4d4f48;line-height:1.5}.check-row input{accent-color:var(--ink);margin-top:2px}.section-rule{border:0;border-top:1px solid var(--line);margin:21px 0}.form-footer{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:21px}.hint{font-size:10px;color:var(--muted);line-height:1.5}.preview{background:#eeece5;min-height:320px;position:relative;display:flex;align-items:center;justify-content:center;padding:18px;overflow:hidden}.preview:before{content:"";position:absolute;inset:0;background-image:linear-gradient(to right,rgba(32,33,31,.045) 1px,transparent 1px),linear-gradient(to bottom,rgba(32,33,31,.045) 1px,transparent 1px);background-size:24px 24px}.preview svg{position:relative;width:100%;max-width:320px;height:285px}.preview-note{position:absolute;left:15px;bottom:13px;font-size:9px;letter-spacing:1px;color:#777870}.preview-tag{position:absolute;right:14px;top:14px;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:7px 9px;font-size:9px;letter-spacing:1px}.preview-foot{padding:14px 18px;display:flex;align-items:center;justify-content:space-between;border-top:1px solid var(--line)}.preview-foot strong{font-size:12px}.preview-foot span{font-size:10px;color:var(--muted)}.right-stack{display:grid;gap:18px}.upload{display:block;border:1px dashed #c8c5bc;border-radius:7px;padding:18px;text-align:center;background:#faf8f2}.upload strong{display:block;font-size:12px;margin-bottom:5px}.upload span{font-size:10px;color:var(--muted);line-height:1.5}.upload input{display:block;width:100%;margin-top:12px;font-size:11px}.ref-preview{display:none;margin-top:12px;max-height:180px;max-width:100%;object-fit:contain}.chatlog{display:grid;gap:12px;max-height:185px;overflow:auto;padding:16px 18px}.bubble{font-size:12px;line-height:1.55;padding:11px 12px;border-radius:8px;max-width:95%;white-space:pre-wrap}.bubble.bot{background:#efede6;justify-self:start}.bubble.user{background:var(--dark);color:white;justify-self:end}.chat-compose{padding:12px;border-top:1px solid var(--line);display:flex;gap:8px}.chat-compose input{min-width:0}.chat-compose button{flex-shrink:0}.exports{display:grid;grid-template-columns:1fr 1fr;gap:9px}.export-tile{border:1px solid var(--line);background:transparent;border-radius:7px;padding:13px;text-align:left}.export-tile strong{display:block;font-size:11px;margin-bottom:5px}.export-tile span{font-size:10px;color:var(--muted);line-height:1.4}.section-title{font-family:var(--serif);font-size:22px;font-weight:400;margin:0}.footnote{font-size:10px;color:var(--muted);line-height:1.6;margin-top:12px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:var(--dark);color:white;padding:12px 16px;border-radius:7px;font-size:12px;display:none;z-index:5;box-shadow:0 8px 25px #0002}.mobile-menu{display:none}
+@media(max-width:980px){.shell{grid-template-columns:190px minmax(0,1fr)}.content{padding:26px 22px}.topbar{padding:0 22px}.workspace{grid-template-columns:1fr}.right-stack{grid-template-columns:1fr 1fr;align-items:start}.preview{min-height:300px}}
+@media(max-width:650px){.shell{display:block}.sidebar{display:none}.topbar{height:60px;padding:0 16px}.content{padding:24px 14px 35px}.hero{align-items:flex-start;flex-direction:column;margin-bottom:20px}.hero h1{font-size:38px}.hero p{font-size:12px}.version{display:none}.top-actions .status{display:none}.workspace{display:grid;grid-template-columns:minmax(0,1fr);gap:13px}.panel-body{padding:15px}.panel-head{padding:15px}.garment-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.garment{min-height:76px}.field-grid{gap:14px 9px}.right-stack{grid-template-columns:1fr;gap:13px}.preview{min-height:285px}.top-actions .outline-btn{padding:9px 10px}.crumb{font-size:11px}}
+</style>
+</head>
+<body>
+<div class="shell">
+<aside class="sidebar">
+  <div class="wordmark">berged<span>BY BERGEDO</span></div>
+  <div><p class="side-label">ATELIER</p><nav class="nav"><button class="active" type="button">✳ &nbsp; Tasarım stüdyosu</button><button type="button" id="projectsNav">▤ &nbsp; Tasarım projeleri</button><button type="button" id="materialsNav">◫ &nbsp; Malzeme kütüphanesi</button></nav></div>
+  <div><p class="side-label">ÇALIŞMA ALANI</p><nav class="nav"><button type="button" id="techNav">⌑ &nbsp; Teknik dosyalar</button><button type="button" id="helpNav">? &nbsp; Nasıl çalışır?</button></nav></div>
+  <div class="sidebar-bottom">BERGED ATELIER · 0.1.0<br>Fikirden üretime, adım adım.<br><br>Görsel model: henüz geliştirme aşamasında.</div>
+</aside>
+<main class="main">
+<header class="topbar"><div class="crumb">Berged Atelier <span> / </span> <strong>Yeni tasarım</strong></div><div class="top-actions"><div class="status"><i class="dot"></i> Tasarım araçları hazır</div><button class="outline-btn" id="newProject">+ Yeni proje</button></div></header>
+<div class="content">
+  <section class="hero"><div><div class="eyebrow">Berged by Bergedo · Tasarım alanı</div><h1>Bir fikri, ürüne<br>dönüştür.</h1><p>Kıyafetini adım adım tanımla. Detayları seç, referans görselini ekle ve üretime hazırlanacak tasarım dosyanı oluştur.</p></div><div class="version">STÜDYO SÜRÜMÜ 0.1.0</div></section>
+  <div class="workspace">
+    <section class="panel">
+      <div class="panel-head"><div><div class="panel-title">Tasarım özellikleri</div><div class="panel-sub">Seçimlerine göre sorular değişir.</div></div><span class="step" id="stepLabel">ADIM 01 / 03</span></div>
+      <div class="panel-body">
+        <label class="field-label">01 — Ne tasarlıyoruz?</label>
+        <div class="garment-grid" id="garmentGrid">
+          <button class="garment selected" data-garment="hoodie"><span class="glyph">♧</span><span>Sweatshirt</span></button>
+          <button class="garment" data-garment="jacket"><span class="glyph">⌑</span><span>Ceket</span></button>
+          <button class="garment" data-garment="pants"><span class="glyph">⋔</span><span>Eşofman altı</span></button>
+          <button class="garment" data-garment="tee"><span class="glyph">⌁</span><span>Tişört</span></button>
+        </div>
+        <div class="field-grid" id="dynamicFields"></div>
+        <hr class="section-rule">
+        <label class="check-row"><input id="brandToggle" type="checkbox" checked><span><strong>Marka etiketi ekle</strong><br>İsteğe bağlı iç etiket ve marka detayları.</span></label>
+        <div class="field-grid" id="brandFields" style="margin-top:13px"><div class="field"><label class="field-label" for="brandName">Marka adı</label><input id="brandName" type="text" value="Berged" placeholder="Marka adı"></div><div class="field"><label class="field-label" for="labelType">Etiket türü</label><select id="labelType"><option value="Dokuma iç etiket">Dokuma iç etiket</option><option value="Baskılı etiket">Baskılı etiket</option><option value="Dış logo etiketi">Dış logo etiketi</option><option value="Etiket istemiyorum">Etiket istemiyorum</option></select></div></div>
+        <div class="field" style="margin-top:16px"><label class="field-label" for="extraNotes">Ek tasarım notları</label><textarea id="extraNotes" placeholder="Örn. omuzlar düşük olsun, cepte gizli dikiş, minimal görünüm..."></textarea></div>
+        <div class="form-footer"><span class="hint">* Ölçüler ilk taslak önerisidir; üretim öncesi prova gerekir.</span><button class="dark-btn" id="updateDesign">Tasarımı güncelle ↗</button></div>
+      </div>
+    </section>
+    <div class="right-stack">
+      <section class="panel">
+        <div class="panel-head"><div><div class="panel-title">Teknik önizleme</div><div class="panel-sub">Özelliklerine göre oluşturulan şematik çizim.</div></div><span class="step">ÖN TASLAK</span></div>
+        <div class="preview"><span class="preview-tag">FLAT / ÖN GÖRÜNÜŞ</span><svg id="garmentSvg" viewBox="0 0 320 300" role="img" aria-label="Kıyafetin şematik teknik çizimi"></svg><span class="preview-note">BERGED ATELIER · ŞEMATİK ÇİZİM</span></div>
+        <div class="preview-foot"><strong id="previewName">Relaxed fit sweatshirt</strong><span id="previewMeta">Pamuk karışım · Siyah</span></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><div class="panel-title">Referans görseli</div><div class="panel-sub">İsteğe bağlı — var olan bir tasarımdan ilerle.</div></div><span class="step">JPG / PNG / WEBP</span></div>
+        <div class="panel-body"><label class="upload"><strong>Görselini buraya ekle</strong><span>Dosyanı seç. Sonra değiştirmek istediğin detayları notlara yaz.</span><input id="referenceFile" type="file" accept="image/png,image/jpeg,image/webp"><img class="ref-preview" id="refPreview" alt="Yüklenen referans görseli"></label><div class="footnote">Bu ilk sürüm görseli önizler; görseli otomatik analiz eden kendi modelimiz henüz bağlanmadı.</div></div>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><div class="panel-title">Berged tasarım asistanı</div><div class="panel-sub">Sohbet et veya formdan ilerle — ikisi aynı tasarımı kullanır.</div></div></div>
+        <div class="chatlog" id="chatlog"><div class="bubble bot">Merhaba, ben Berged Atelier. Nasıl bir sweatshirt tasarlamak istiyorsun? Özellikleri soldan seçebilir ya da fikrini buraya yazabilirsin.</div></div>
+        <form class="chat-compose" id="chatForm"><input id="chatInput" type="text" placeholder="Örn. kapüşonlu, bol kesim..." aria-label="Tasarıma ilişkin mesaj"><button class="dark-btn" type="submit">Gönder</button></form>
+      </section>
+      <section class="panel">
+        <div class="panel-head"><div><div class="panel-title">Çıktılar</div><div class="panel-sub">Mevcut tasarım bilgilerini dışa aktar.</div></div></div>
+        <div class="panel-body"><div class="exports"><button class="export-tile" id="exportSummary"><strong>↓ Tasarım özeti</strong><span>Özellikler ve üretim notları · TXT</span></button><button class="export-tile" id="exportSvg"><strong>↓ Teknik çizim</strong><span>Vektörel ön çizim · SVG</span></button><button class="export-tile" id="saveProject"><strong>＋ Projeyi kaydet</strong><span>Bu tarayıcıda sakla</span></button><button class="export-tile" id="loadProject"><strong>↻ Kayıtlı projeyi aç</strong><span>Son kaydedilen tasarım</span></button></div><div class="footnote">Bu sürümde otomatik kalıp çıkarma veya doğrulanmış üretim ölçüleri yoktur. Çıktılar başlangıç taslağıdır.</div></div>
+      </section>
+    </div>
+  </div>
+</div>
+</main>
+</div>
+<div class="toast" id="toast" role="status"></div>
+<script>
+const specs={
+ hoodie:{name:"Sweatshirt",fit:[["relaxed","Relaxed fit"],["oversized","Oversize"],["regular","Regular fit"],["cropped","Crop fit"]],fabric:[["cotton","Pamuk"],["fleece","Üç iplik şardonlu"],["terry","French terry"],["blend","Pamuk-polyester karışım"]],hood:true,pockets:[["kangaroo","Kanguru cep"],["side","Yan cepler"],["none","Cepsiz"]],closure:[["pullover","Fermuarsız"],["zip","Tam fermuarlı"]],hem:[["rib","Ribanalı manşet ve etek"],["open","Düz bitiş"]]},
+ jacket:{name:"Ceket",fit:[["regular","Regular fit"],["relaxed","Relaxed fit"],["oversized","Oversize"],["boxy","Boxy fit"]],fabric:[["twill","Pamuk gabardin"],["nylon","Naylon teknik kumaş"],["denim","Denim"],["canvas","Kanvas"]],hood:true,pockets:[["flap","Kapaklı cepler"],["welt","Kenar cepler"],["chest","Göğüs cepleri"],["none","Cepsiz"]],closure:[["zip","Fermuar"],["buttons","Düğme"],["snap","Çıtçıt"]],hem:[["elastic","Lastikli etek"],["straight","Düz etek"]]},
+ pants:{name:"Eşofman altı",fit:[["baggy","Baggy"],["relaxed","Relaxed fit"],["straight","Straight leg"],["tapered","Daralan paça"]],fabric:[["fleece","Üç iplik şardonlu"],["terry","French terry"],["cotton","Pamuk"],["nylon","Teknik kumaş"]],pockets:[["side","Yan cepler"],["zip","Fermuarlı cepler"],["none","Cepsiz"]],closure:[["elastic","Lastikli bel + bağcık"],["flat","Düz bel"],["drawcord","Bağcıklı bel"]],hem:[["cuff","Paça ribanası"],["elastic","Lastikli paça"],["open","Açık paça"]]},
+ tee:{name:"Tişört",fit:[["regular","Regular fit"],["oversized","Oversize"],["boxy","Boxy fit"],["slim","Slim fit"]],fabric:[["jersey","Pamuk süprem"],["heavy","Ağır gramaj pamuk"],["organic","Organik pamuk"],["blend","Pamuk karışım"]],pockets:[["none","Cepsiz"],["chest","Göğüs cebi"]],closure:[["crew","Bisiklet yaka"],["vneck","V yaka"],["high","Yüksek yaka"]],hem:[["straight","Düz etek"],["curved","Kavisli etek"]]}
+};
+let garment="hoodie";
+const $=id=>document.getElementById(id);
+function optionsHTML(id,label,opts){return '<div class="field"><label class="field-label" for="'+id+'">'+label+'</label><select id="'+id+'">'+opts.map(o=>'<option value="'+o[0]+'">'+o[1]+'</option>').join("")+'</select></div>'}
+function renderFields(){
+ const s=specs[garment];let html=optionsHTML("fit","02 — Kesim / kalıp",s.fit)+optionsHTML("fabric","03 — Kumaş",s.fabric)+optionsHTML("color","04 — Ana renk",[["black","Siyah"],["cream","Kırık beyaz"],["grey","Gri"],["navy","Lacivert"],["olive","Zeytin yeşili"],["brown","Kahverengi"],["custom","Özel renk (notlara yaz)"]])+optionsHTML("pockets","05 — Cep tasarımı",s.pockets)+optionsHTML("closure","06 — Ön / yaka detayı",s.closure)+optionsHTML("hem","07 — Manşet / etek",s.hem);
+ if(s.hood)html+='<div class="field full"><label class="check-row"><input id="hoodToggle" type="checkbox" '+(garment==="hoodie"?'checked':'')+'><span><strong>Kapüşon ekle</strong><br>Kapüşon seçiliyse ip, astar gibi ayrıntılar da açılır.</span></label></div><div class="field" id="cordField"><label class="field-label" for="cord">Kapüşon ipi</label><select id="cord"><option value="round">Yuvarlak kordon</option><option value="flat">Düz bağcık</option><option value="none">İpsiz</option></select></div>';
+ html+='<div class="field"><label class="field-label" for="detail">Yüzey / baskı</label><select id="detail"><option value="none">Sade, baskısız</option><option value="small">Küçük göğüs baskısı</option><option value="large">Büyük ön baskı</option><option value="back">Sırt baskısı</option><option value="embroidery">Nakış detayı</option></select></div>';
+ $("dynamicFields").innerHTML=html;
+ ["fit","fabric","color","pockets","closure","hem","hoodToggle","cord","detail"].forEach(id=>{let el=$(id);if(el)el.addEventListener("change",()=>{if(id==="hoodToggle")toggleCord();updatePreview()})});
+ toggleCord();updatePreview();
+}
+function toggleCord(){const t=$("hoodToggle"),f=$("cordField");if(f)f.style.display=t&&t.checked?"block":"none"}
+function val(id){let e=$(id);return e?e.value:""}
+function label(id){let e=$(id);return e&&e.selectedOptions.length?e.selectedOptions[0].text:"Belirtilmedi"}
+function hasHood(){return !!$("hoodToggle")&&$("hoodToggle").checked}
+function colorValue(){return ({black:"#292a28",cream:"#e7e0d2",grey:"#92928c",navy:"#303b50",olive:"#697054",brown:"#795d4a",custom:"#777777"})[val("color")]||"#292a28"}
+function svgDrawing(){
+ const c=colorValue(),s=specs[garment];let shapes="";
+ if(garment==="pants"){shapes='<path d="M104 40 L216 40 L208 125 L198 253 L160 253 L153 126 L145 126 L138 253 L100 253 L112 125 Z" fill="'+c+'" stroke="#30312e" stroke-width="1.8"/><path d="M104 40 L216 40 L213 61 Q160 69 107 61 Z" fill="none" stroke="#30312e" stroke-width="1.5"/><path d="M160 62 L160 120" stroke="#30312e" stroke-width="1.5"/>';
+ if(val("pockets")!=="none")shapes+='<path d="M116 74 L137 92 M204 74 L183 92" fill="none" stroke="#30312e" stroke-width="1.5"/>';
+ if(val("hem")==="cuff")shapes+='<path d="M100 241 L138 241 L138 253 L100 253 Z M160 241 L198 241 L198 253 L160 253 Z" fill="#ddd7c9" stroke="#30312e" stroke-width="1.5"/>';
+ }else if(garment==="tee"){shapes='<path d="M111 49 L137 37 Q160 52 183 37 L209 49 L246 91 L220 111 L200 88 L200 250 L120 250 L120 88 L100 111 L74 91 Z" fill="'+c+'" stroke="#30312e" stroke-width="1.8"/><path d="M137 37 Q160 69 183 37" fill="none" stroke="#30312e" stroke-width="1.5"/>';
+ }else if(garment==="jacket"){shapes='<path d="M128 39 L145 33 L160 49 L175 33 L192 39 L219 60 L244 94 L218 111 L200 87 L200 251 L120 251 L120 87 L102 111 L76 94 L101 60 Z" fill="'+c+'" stroke="#30312e" stroke-width="1.8"/><path d="M145 33 L160 57 L175 33 M160 57 L160 251" fill="none" stroke="#30312e" stroke-width="1.6"/>';
+ if(val("closure")==="buttons")for(let y=80;y<220;y+=28)shapes+='<circle cx="166" cy="'+y+'" r="2" fill="#30312e"/>';
+ if(val("pockets")!=="none")shapes+='<path d="M129 128 L151 128 L151 158 L129 158 Z M169 128 L191 128 L191 158 L169 158 Z" fill="none" stroke="#30312e" stroke-width="1.5"/>';
+ }else{shapes='<path d="M116 54 L139 38 Q160 49 181 38 L204 54 L238 94 L215 113 L195 89 L198 251 L122 251 L125 89 L105 113 L82 94 Z" fill="'+c+'" stroke="#30312e" stroke-width="1.8"/>';
+ if(hasHood())shapes+='<path d="M139 38 Q125 6 160 12 Q195 6 181 38 L174 58 L146 58 Z" fill="'+c+'" stroke="#30312e" stroke-width="1.8"/>';
+ if(val("closure")==="zip")shapes+='<path d="M160 57 L160 251" stroke="#30312e" stroke-width="1.8"/>';
+ if(val("pockets")==="kangaroo")shapes+='<path d="M125 177 L195 177 L190 213 L130 213 Z" fill="none" stroke="#30312e" stroke-width="1.5"/>';
+ else if(val("pockets")==="side")shapes+='<path d="M124 144 L145 161 M196 144 L175 161" fill="none" stroke="#30312e" stroke-width="1.5"/>';
+ }
+ if(val("detail")==="small")shapes+='<rect x="173" y="102" width="14" height="8" rx="1" fill="#d6f36a" stroke="#30312e" stroke-width=".7"/>';
+ if(val("detail")==="large")shapes+='<rect x="130" y="130" width="60" height="27" rx="2" fill="none" stroke="#d6f36a" stroke-width="3"/>';
+ if(val("detail")==="back")shapes+='<path d="M130 132 L190 132 M130 142 L190 142" stroke="#d6f36a" stroke-width="3"/>';
+ if(val("detail")==="embroidery")shapes+='<path d="M173 107 q7 -8 14 0 q-7 8 -14 0" fill="none" stroke="#d6f36a" stroke-width="2"/>';
+ return '<g>'+shapes+'</g>';
+}
+function updatePreview(){
+ if(!$("fit"))return;
+ $("garmentSvg").innerHTML=svgDrawing();
+ $("previewName").textContent=label("fit")+" "+specs[garment].name.toLocaleLowerCase("tr-TR");
+ $("previewMeta").textContent=label("fabric")+" · "+label("color");
+ $("stepLabel").textContent="ADIM 0"+(garment==="hoodie"?"1":garment==="jacket"?"2":garment==="pants"?"3":"4")+" / 04";
+}
+function getData(){
+ const s=specs[garment],d={product:s.name,fit:label("fit"),fabric:label("fabric"),color:label("color"),pockets:label("pockets"),closure:label("closure"),hem:label("hem"),detail:label("detail"),hood:s.hood?(hasHood()?"Kapüşonlu":"Kapüşonsuz"):"Uygulanmaz",cord:s.hood&&hasHood()?label("cord"):"Uygulanmaz",brandEnabled:$("brandToggle").checked,brand:$("brandToggle").checked?($("brandName").value||"Belirtilmedi"):"Etiket kapalı",labelType:$("brandToggle").checked?label("labelType"):"Etiket kullanılmayacak",notes:$("extraNotes").value||"Yok",reference:$("referenceFile").files[0]?.name||"Yüklenmedi"};
+ return d;
+}
+function summaryText(){const d=getData();return "BERGED ATELIER — TASARIM ÖZETİ\nBerged by Bergedo\n\nÜRÜN\n"+Object.entries(d).map(([k,v])=>k.toLocaleUpperCase("tr-TR")+": "+v).join("\n")+"\n\nÜRETİM NOTU\nBu dosya ilk tasarım taslağıdır. Kumaş çekmesi, gerçek beden ölçüleri, dikiş payları ve numune prova sonucu üretim öncesinde uzman tarafından doğrulanmalıdır. Bu çıktı kalıp veya onaylı teknik föy yerine geçmez.\n"}
+function download(name,content,type){const blob=new Blob([content],{type});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=name;a.click();URL.revokeObjectURL(url)}
+function toast(t){$("toast").textContent=t;$("toast").style.display="block";clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>$("toast").style.display="none",2700)}
+$("garmentGrid").addEventListener("click",e=>{const b=e.target.closest("[data-garment]");if(!b)return;garment=b.dataset.garment;document.querySelectorAll(".garment").forEach(x=>x.classList.toggle("selected",x===b));renderFields();addBubble("bot",specs[garment].name+" için soruları hazırladım. Kesim, kumaş ve detayları seç; önizleme otomatik güncellenecek.")});
+$("brandToggle").addEventListener("change",()=>{$("brandFields").style.display=$("brandToggle").checked?"grid":"none"});
+$("updateDesign").addEventListener("click",()=>{updatePreview();addBubble("bot","Tasarım özelliklerini güncelledim. Şu an "+label("fit").toLowerCase()+" kesim, "+label("fabric").toLowerCase()+" kumaş ve "+label("color").toLowerCase()+" renk seçili. İstersen ek notlarla daha da netleştirebilirsin.");toast("Tasarım önizlemesi güncellendi.")});
+$("referenceFile").addEventListener("change",e=>{const f=e.target.files[0];if(!f)return;if(!f.type.startsWith("image/")){toast("Lütfen bir görsel dosyası seç.");return}const r=new FileReader();r.onload=()=>{$("refPreview").src=r.result;$("refPreview").style.display="block";addBubble("bot","Referans görselini ekledin: "+f.name+". Bu sürümde görsel yalnızca önizleniyor; otomatik analiz henüz etkin değil. Değiştirmek istediğin yerleri Ek tasarım notları alanına yazabilirsin.")};r.readAsDataURL(f)});
+function addBubble(who,text){const b=document.createElement("div");b.className="bubble "+who;b.textContent=text;$("chatlog").appendChild(b);$("chatlog").scrollTop=$("chatlog").scrollHeight}
+$("chatForm").addEventListener("submit",e=>{e.preventDefault();const t=$("chatInput").value.trim();if(!t)return;addBubble("user",t);$("chatInput").value="";const lower=t.toLocaleLowerCase("tr-TR");if(lower.includes("oversize")||lower.includes("bol")){if(["hoodie","jacket","tee"].includes(garment))$("fit").value=garment==="tee"?"oversized":"oversized";else $("fit").value=lower.includes("baggy")?"baggy":"relaxed"}if(lower.includes("baggy"))$("fit").value="baggy";if(lower.includes("kapüşonsuz")&&$("hoodToggle"))$("hoodToggle").checked=false;if(lower.includes("kapüşon")&&$("hoodToggle"))$("hoodToggle").checked=true;if(lower.includes("fermuar")&&["hoodie","jacket"].includes(garment))$("closure").value="zip";if(lower.includes("siyah"))$("color").value="black";if(lower.includes("beyaz"))$("color").value="cream";if(lower.includes("cepsiz"))$("pockets").value="none";if(lower.includes("etiketsiz")){$("brandToggle").checked=false;$("brandFields").style.display="none"}toggleCord();updatePreview();addBubble("bot","Notunu tasarıma uygulayabildiğim seçeneklere işledim. Şu an: "+label("fit")+", "+label("fabric")+", "+label("color")+". Daha özel bir ayrıntıysa Ek tasarım notları alanına da ekleyebilirsin. Bu sürüm sohbeti gerçek bir AI modeliyle çalıştırmıyor; şimdilik temel komutları tanıyor.")});
+$("exportSummary").addEventListener("click",()=>download("berged-tasarim-ozeti.txt",summaryText(),"text/plain;charset=utf-8"));
+$("exportSvg").addEventListener("click",()=>{const svg='<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 300"><rect width="320" height="300" fill="#eeece5"/>'+svgDrawing()+'</svg>';download("berged-teknik-on-cizim.svg",svg,"image/svg+xml")});
+$("saveProject").addEventListener("click",()=>{try{const data={garment,values:{}};document.querySelectorAll("#dynamicFields select").forEach(e=>data.values[e.id]=e.value);data.hood=$("hoodToggle")?$("hoodToggle").checked:null;data.brand=$("brandToggle").checked;data.brandName=$("brandName").value;data.labelType=$("labelType").value;data.notes=$("extraNotes").value;localStorage.setItem("bergedAtelierProject",JSON.stringify(data));toast("Proje bu tarayıcıya kaydedildi.")}catch(e){toast("Tarayıcı kaydı kullanılamıyor.")}});
+$("loadProject").addEventListener("click",()=>{try{const data=JSON.parse(localStorage.getItem("bergedAtelierProject")||"null");if(!data){toast("Kayıtlı proje bulunamadı.");return}garment=data.garment;document.querySelectorAll(".garment").forEach(x=>x.classList.toggle("selected",x.dataset.garment===garment));renderFields();Object.entries(data.values||{}).forEach(([k,v])=>{if($(k))$(k).value=v});if($("hoodToggle")&&data.hood!==null)$("hoodToggle").checked=data.hood;$("brandToggle").checked=data.brand;$("brandName").value=data.brandName;$("labelType").value=data.labelType;$("extraNotes").value=data.notes;$("brandFields").style.display=data.brand?"grid":"none";toggleCord();updatePreview();toast("Kayıtlı proje açıldı.")}catch(e){toast("Proje açılamadı.")}});
+$("newProject").addEventListener("click",()=>{garment="hoodie";document.querySelectorAll(".garment").forEach(x=>x.classList.toggle("selected",x.dataset.garment===garment));$("extraNotes").value="";$("brandToggle").checked=true;$("brandFields").style.display="grid";$("brandName").value="Berged";$("referenceFile").value="";$("refPreview").style.display="none";$("chatlog").innerHTML="";addBubble("bot","Yeni proje başladı. Nasıl bir ürün tasarlayalım?");renderFields();toast("Yeni tasarım açıldı.")});
+$("projectsNav").addEventListener("click",()=>$("loadProject").click());
+$("materialsNav").addEventListener("click",()=>toast("Malzeme kütüphanesi sonraki geliştirme aşamasında."));
+$("techNav").addEventListener("click",()=>$("exportSummary").click());
+$("helpNav").addEventListener("click",()=>addBubble("bot","Önce ürün türünü seç. Sonra kalıp, kumaş ve ayrıntıları belirle. İstersen referans görseli ekle. Tasarım özeti ve şematik çizimi dışa aktarabilirsin. Bu sürüm bir prototiptir; otomatik AI görsel üretimi ve onaylı üretim kalıpları henüz yok."));
+renderFields();
+</script>
+</body>
+</html>
