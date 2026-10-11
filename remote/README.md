@@ -1,31 +1,31 @@
-# BERGED AI Remote — Ön Prototip 0.1
+# BERGED AI Remote — 0.2 LAN prototipi
 
-Telefon ve bilgisayardan kullanılabilecek, Windows 8.1 ve düşük donanım düşünülerek hazırlanmış hafif arayüz prototipi.
+Bu sürüm, tarayıcı arayüzüne ek olarak Python standart kütüphanesiyle çalışan küçük bir yerel ağ yardımcısı içerir. Python 3.8+ hedeflenmiştir; ek paket gerekmez.
 
-## Denemek
-1. `remote/index.html` dosyasını indir.
-2. Chrome veya başka güncel bir tarayıcıda aç.
-3. Menüleri, örnek görevleri, demo eşleştirmesini ve asistan sohbetini dene.
+## Başlatma
+1. `remote` klasörünü bilgisayarına indir.
+2. Python 3 kurulu değilse Python 3.8.x gibi Windows 8.1 ile uyumlu bir sürüm kur.
+3. Komut İstemi'ni bu klasörde aç.
+4. `python server.py` komutunu çalıştır.
+5. Terminalde yazan eşleştirme kodunu not et.
+6. Bilgisayarda `http://127.0.0.1:8765` adresini aç.
+7. Telefon ve bilgisayar aynı güvenilir Wi-Fi ağındayken terminalde gösterilen yerel ağ adresini telefonda aç.
+8. Telefonda **Cihaz eşleştir** düğmesine basıp terminaldeki kodu gir.
 
-Harici kütüphane, kurulum, sunucu veya API anahtarı gerekmez.
+## Bu sürümde gerçekten çalışanlar
+- Aynı yerel ağdan telefon tarayıcısı ile bilgisayardaki paneli açma
+- Terminalde üretilen PIN ile eşleştirme; art arda yanlış denemelerde geçici kilit
+- Eşleştirilmiş oturumla bilgisayarın adı, platformu ve Python sürümünü görme
+- Kullanıcının girdiği HTTP/HTTPS adresini bilgisayarın varsayılan tarayıcısında açma
+- Eşleştirmeyi iptal etme
 
-## Şu anda çalışanlar
-- Telefon ve masaüstüne uyumlu kontrol paneli
-- Menü geçişleri
-- Örnek AI görev cevapları (yerel kurallar, gerçek model değil)
-- Demo cihaz eşleştirme / bağlantıyı kesme durumu
-- Uzaktan kontrol butonları için örnek işlem kayıtları
+## Bilerek desteklenmeyenler
+- Uzaktan ekran görüntüsü, fare/klavye kontrolü
+- Keyfî komut çalıştırma, dosya silme veya dosyalara toplu erişim
+- Gerçek LLM / yapay zekâ API bağlantısı
+- İnternet üzerinden erişim
 
-## Henüz olmayanlar
-- Gerçek telefon-bilgisayar bağlantısı
-- Gerçek AI modeli/API entegrasyonu
-- Ekran görüntüsü alma, klavye/fare kontrolü veya dosya aktarımı
-- Kullanıcı hesabı ve şifreli ağ bağlantısı
+## Güvenlik notu — önemli
+Bu bir geliştirme prototipidir; ağ trafiği HTTPS ile şifrelenmez. Yalnızca güvendiğin özel ev Wi-Fi ağında dene. Genel Wi-Fi'da kullanma, modeminde port yönlendirme açma, bilgisayarını doğrudan internete açma ve hassas hesaplarla işlem yapma. PIN ve oturum anahtarı temel koruma sağlar ama üretim güvenliği yerine geçmez. Windows Güvenlik Duvarı ağ erişimi sorarsa yalnızca özel ağlarda izin ver.
 
-Demo eşleştirmesi gerçek bilgisayara bağlanmaz. Gerçek uzaktan kontrol eklenirken Windows yardımcı uygulaması, kimlik doğrulama, şifreli bağlantı, cihaz izinleri ve her önemli işlem için kullanıcı onayı gerekir.
-
-## Sonraki geliştirme adımları
-1. Windows 8.1'de çalışabilecek küçük bir yardımcı programın teknik denemesi.
-2. İnternet üzerinden doğrudan açık port gerektirmeyen, kimliği doğrulanmış bağlantı tasarımı.
-3. İzinli görevler: önce dosya listeleme ve durum bilgisi, sonra kullanıcı onayıyla sınırlı eylemler.
-4. Yapay zekâ sağlayıcısını eklemek; API anahtarını asla tarayıcıya veya herkese açık depoya koymamak.
+Gerçek internet üzerinden uzaktan erişim eklemeden önce TLS, daha sağlam kimlik doğrulama, cihaz iptali, izin sistemi ve güvenli aktarım tasarlanmalıdır.
